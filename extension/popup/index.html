@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MoodleGPT</title>
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Should always be at the top -->
+  <script src="./js/utils.js" defer></script>
+
+  <script src="./js/index.js" defer></script>
+  <script src="./js/modeHandler.js" defer></script>
+  <script src="./js/gptVersion.js" defer></script>
+  <script src="./js/version.js" defer></script>
+
+  <link rel="icon" type="image/png" href="../icon.png" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+  <main>
+    <div class="line center" style="margin-bottom: 0.5rem">
+      <a target="_blank" rel="noopener noreferrer" href="https://www.flaticon.com/free-icons/mortarboard" title="icoon">
+        <img src="../icon.png" alt="icon" />
+      </a>
+      <div class="col center title">
+        <h1>extension</h1>
+        <p id="version"></p>
+      </div>
+    </div>
+    <div class="line center">
+      <label for="apiKey" class="textLabel">Key<span class="required">*</span>:</label>
+      <input id="apiKey" type="text" />
+    </div>
+    <div class="line center">
+      <label for="model" class="textLabel">Model<span class="required">*</span>:</label>
+      <input type="text" id="model" list="models" />
+      <datalist id="models"></datalist>
+    </div>
+    <div class="line center">
+      <label for="code" class="textLabel">Code:</label>
+      <input id="code" type="text" />
+    </div>
+    <div class="line mt">
+      <i class="fa-solid fa-robot"></i>
+      <p>Mode:</p>
+    </div>
+    <div class="line">
+      <ul id="mode" class="line center">
+        <li><button value="autocomplete">autocomplete</button></li>
+        <li>
+          <button value="clipboard" class="not-selected">clipboard</button>
+        </li>
+        <li>
+          <button value="question-to-answer" class="not-selected">question to answer</button>
+        </li>
+      </ul>
+    </div>
+    <div class="line mt">
+      <i class="fa-solid fa-gear"></i>
+      <p>Settings:</p>
+    </div>
+    <div class="line center" style="gap: 2rem">
+      <div class="col">
+        <div class="line">
+          <input id="logs" type="checkbox" />
+          <label for="logs">Console logs</label>
+        </div>
+        <div class="line">
+          <input id="title" type="checkbox" checked />
+          <label for="title">Title indication</label>
+        </div>
+        <div class="line">
+          <input id="cursor" type="checkbox" checked />
+          <label for="cursor">Cursor indication</label>
+        </div>
+        <div class="line">
+          <input id="timeout" type="checkbox" checked />
+          <label for="timeout">Request timeout</label>
+        </div>
+      </div>
+      <div class="col">
+        <div class="line">
+          <input id="typing" type="checkbox" />
+          <label for="typing">Typing effect</label>
+        </div>
+        <div class="line">
+          <input id="mouseover" type="checkbox" />
+          <label for="mouseover">Mouseover effect</label>
+        </div>
+        <div class="line">
+          <input id="infinite" type="checkbox" />
+          <label for="infinite">Infinite try</label>
+        </div>
+        <div class="line">
+          <input id="history" type="checkbox" />
+          <label for="history">Save history</label>
+        </div>
+        <!-- This option is only showed if the current version of the model support it -->
+        <div class="line" id="includeImages-line" style="display: none">
+          <input id="includeImages" type="checkbox" />
+          <label for="includeImages">Include images</label>
+        </div>
+      </div>
+    </div>
+    <p id="message">{Message}</p>
+    <div class="line center">
+      <button class="save">Save</button>
+    </div>
+
+  </main>
+</body>
+
+</html>
